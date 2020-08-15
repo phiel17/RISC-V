@@ -1,3 +1,4 @@
 benchmarks/
 a.out
 *.vcd
+path.vh
