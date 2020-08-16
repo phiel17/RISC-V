@@ -4,15 +4,13 @@ module decode(
 	input [31:0] ins,
 	output [6:0] opcode,
 	output [2:0] funct3,
-	output [4:0] rs1, rs2, rd,
+	output [4:0] rd,
 	output [31:0] imm
 );
 	wire [31:0] imm_i, imm_s, imm_b, imm_u, imm_j, funct7;
 
 	assign opcode = ins[6:0];
 	assign funct3 = ins[14:12];
-	assign rs1 = ins[19:15];
-	assign rs2 = ins[24:20];
 	assign rd = ins[11:7];
 	assign imm = select_imm(imm_i, imm_s, imm_b, imm_u, imm_j, funct7);
 

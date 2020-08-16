@@ -5,7 +5,7 @@ module testbench;
 	reg resetn;
 	wire uart_tx;
 
-	parameter CYCLE = 100;
+	parameter CYCLE = 30;
 
 	always #(CYCLE / 2) clk = ~clk;
 

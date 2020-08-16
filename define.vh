@@ -13,6 +13,13 @@
 `define OPIMM	7'b0010011
 `define OP		7'b0110011
 
+// pipeline stages
+`define ST_FET	5'b10000
+`define ST_DEC	5'b01000
+`define ST_EXE	5'b00100
+`define ST_MEM	5'b00010
+`define ST_WBK	5'b00001
+
 // hardware counter/UART address
 `define HC_ADDR		32'hffffff00
 `define UART_ADDR	32'hf6fff070

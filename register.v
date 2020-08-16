@@ -4,16 +4,20 @@ module reg_file (
 	input [4:0] rs1, rs2, rd,
 	input rd_enablen,
 	input [31:0] wdata,
-	output [31:0] rreg1, rreg2
+	output reg [31:0] rreg1, rreg2
 );
 	reg [31:0] regfile[0:31];
 
-	assign rreg1 = regfile[rs1];
-	assign rreg2 = regfile[rs2];
-
 	always @(negedge resetn or posedge clk) begin
-		if(resetn == 0) regfile[0] <= 32'h00000000;
-		else if(|rd & ~rd_enablen) regfile[rd] <= wdata;
+		if(resetn == 0) begin
+			regfile[0] <= 32'h00000000;
+			rreg1 <= 32'b0;
+			rreg2 <= 32'b0;
+		end else begin
+			if(|rd & ~rd_enablen) regfile[rd] <= wdata;
+			rreg1 <= regfile[rs1];
+			rreg2 <= regfile[rs2];
+		end
 	end
 
 	// for gtkwave
